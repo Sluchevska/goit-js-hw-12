@@ -1,6 +1,7 @@
 import './sass/main.scss';
 
-import fetxhCountries from './fetchCountries';
+import fetchCountries from './fetchCountries';
+import renderCountriesCard from './renderCountries';
 
 const DEBOUNCE_DELAY = 300;
 
@@ -13,8 +14,9 @@ console.log(inputRef)
 function onSearch(e) {
     e.preventDefault();
 
-    form = e.currentTarget;
-    const searchQuery = form.elements.query.value
+    const form = e.currentTarget;
+    const searchQuery = form.value
+    console.log(searchQuery)
 
 
     fetchCountries(searchQuery)
