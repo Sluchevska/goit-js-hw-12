@@ -10,11 +10,16 @@ console.log(inputRef)
 
 
 
-function onSearch(name) {
-    name.preventDefault();
-    console.log(name.currentTarget.value)
-    const country = name.currentTarget.value
-    fetchCountries(country)
+function onSearch(e) {
+    e.preventDefault();
+
+    form = e.currentTarget;
+    const searchQuery = form.elements.query.value
+
+
+    fetchCountries(searchQuery)
+        .then(renderCountriesCard)
+    .catch(error => console.log(error))
     
 }
 
