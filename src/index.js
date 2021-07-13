@@ -26,7 +26,9 @@ function renderCountriesCard(country) {
     }
       if (country.length === 1) {
           const markup = countryCard(country);
-          countryHolder.insertAdjacentHTML('afterbegin', markup)
+          countryHolder.insertAdjacentHTML('afterbegin', markup);
+        //   inputRef.value = '';
+             clearInput()
             return
     }
     if (country.status === 404) {
@@ -53,7 +55,7 @@ function fetchCountries(name) {
 
 function onSearch(e) {
     e.preventDefault();
-    clearInput()
+ 
     const searchCountry = e.target.value
     fetchCountries(searchCountry)
         .then(country => {

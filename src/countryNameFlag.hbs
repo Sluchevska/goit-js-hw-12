@@ -1,4 +1,9 @@
-<div>
-    <h2>Name: {{name}}</h2>
-<img src={{flag}} alt="flag">
-</div>
+<ul>
+    {{#each this}}
+    <li>
+<h2>Name: {{name}}</h2>
+<img src="{{flag}}" alt="flag">
+    </li>
+    {{/each}}
+</ul>
+    
