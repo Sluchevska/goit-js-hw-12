@@ -18,7 +18,7 @@ function renderCountriesCard(country) {
         Notiflix.Notify.info('Too many matches found. Please enter a more specific name');
         return;
     }
-    if (country.length > 2 && country.length < 10) {
+  if (country.length > 2 && country.length < 10) {
         const markup = countryNameFlag(country);
         countryHolder.insertAdjacentHTML('afterbegin', markup)
         return;
