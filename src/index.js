@@ -1,19 +1,26 @@
 import './sass/main.scss';
 import Notiflix from "notiflix";
 
-// import fetchCountries from './fetchCountries';
-// import renderCountriesCard from './renderCountries';
+import fetchCountries from './fetchCountries';
 
-const DEBOUNCE_DELAY = 300;
-var debounce = require('lodash.debounce');
+
 import countryCard from './countryCard.hbs'
 import countryNameFlag from './countryNameFlag.hbs'
 const inputRef = document.getElementById('search-box');
-console.log(inputRef)
 const countryHolder = document.querySelector('.country-info')
 
-function renderCountriesCard(country) {
+const DEBOUNCE_DELAY = 300;
+var debounce = require('lodash.debounce');
+
+ function renderCountriesCard(country) {
     if (!country) return;
+    if (country.length === 1) {
+          const markup = name[0];
+          countryHolder.insertAdjacentHTML('afterbegin', countryCard(markup));
+        //   inputRef.value = '';
+            //  clearInput()
+            return
+    }
     if (country.length > 10) {
         Notiflix.Notify.info('Too many matches found. Please enter a more specific name');
         return;
@@ -24,45 +31,26 @@ function renderCountriesCard(country) {
         return;
     
     }
-      if (country.length === 1) {
-          const markup = countryCard(country);
-          countryHolder.insertAdjacentHTML('afterbegin', markup);
-        //   inputRef.value = '';
-             clearInput()
-            return
-    }
+      
     if (country.status === 404) {
                 Notiflix.Notify.failure('Oops, there is no country with that name');
             }
 }
 
-
-
-
-
-function fetchCountries(name) {
-   
-       return fetch(`https://restcountries.eu/rest/v2/name/${name}`)
-           .then(response => {
-        return response.json();
-    }) 
-   
-}
-
-
-
-
-
 function onSearch(e) {
-    e.preventDefault();
+    // e.preventDefault();
  
     const searchCountry = e.target.value
+    // countryHolder.innerHTML = '';
+
     fetchCountries(searchCountry)
-        .then(country => {
-            inputRef.innerHTML = '';
-            renderCountriesCard(country)
-        })
-        .catch(error => console.log(error))
+    .then(renderCountriesCard)
+ .catch(error => console.log(error))
+        // .then(countries => {
+           
+        //     renderCountriesCard(countries)
+        // })
+        // .catch(error => console.log(error))
   
 //     
 //   if (searchCountry === '') {
