@@ -33,6 +33,7 @@ function renderCountriesCard(country) {
 }
 
 function onSearch(e) {
+    clearInput()
      const searchCountry = e.target.value
     // countryHolder.innerHTML = '';
 
@@ -44,6 +45,7 @@ function onSearch(e) {
 
 function clearInput() {
     inputRef.innerHTML = ''
+    countryHolder.innerHTML = ''
 }
 
 
