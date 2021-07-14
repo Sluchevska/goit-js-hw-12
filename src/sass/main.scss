@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-   text-decoration: none;
+  text-decoration: none;
 }
 
 body {
@@ -9,7 +9,7 @@ body {
   background-color: #fafafa;
   color: #212121;
   line-height: 1.5;
- 
+  font-size: 12px;
 }
 
 #search-box {
@@ -20,6 +20,11 @@ body {
 }
 
 .country_group {
-  displ
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px;
 }
 
+.country_name {
+  margin-left: 20px;
+}
