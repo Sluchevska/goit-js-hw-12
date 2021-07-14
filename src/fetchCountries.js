@@ -1,3 +1,4 @@
+import Notiflix from "notiflix";
 const inputRef = document.getElementById('search-box');
 
 export default  function fetchCountries(name) {
